@@ -110,15 +110,19 @@ public class Main {
     private static /*тип*/ int getFirstPositiveIndex(int[] arrayOfValues) {
         /* Укажите тип переменной */
         /*тип*/ int firstPositiveIndex = 0;
+
         /* Используя цикл while найдите индекс первого положительного значения в массиве и сохраните в переменную firstPositiveIndex */
         while (firstPositiveIndex<=0){
             for(int i=0; i<arrayOfValues.length; i++){
-                if(firstPositiveIndex<arrayOfValues[i] && firstPositiveIndex<=0){
-                    firstPositiveIndex=arrayOfValues[i];
+                if(arrayOfValues[i]>=0){
+                    firstPositiveIndex++;
+                    break;
+                }else if (arrayOfValues[i]<0){
+                    firstPositiveIndex++;
                 }
             }
         }
-        return firstPositiveIndex;
+        return firstPositiveIndex - 1;
     }
 
     /* Укажите тип значения, которое будет возвращать метод*/
@@ -126,14 +130,17 @@ public class Main {
         /* Укажите тип переменной */
         /*тип*/ int firstNegativeIndex = 0;
         /* Используя цикл while найдите первое отрицательное значение и сохраните в переменную firstNegativeIndex */
-        while (firstNegativeIndex>=0){
+        while (firstNegativeIndex<=0){
             for(int i=0; i<arrayOfValues.length; i++){
-                if(firstNegativeIndex>arrayOfValues[i] && firstNegativeIndex<=0){
-                    firstNegativeIndex=arrayOfValues[i];
+                if(arrayOfValues[i]<0){
+                    firstNegativeIndex++;
+                    break;
+                }else if (arrayOfValues[i]>0){
+                    firstNegativeIndex++;
                 }
             }
         }
-        return firstNegativeIndex;
+        return firstNegativeIndex - 1;
     }
 
     /* Укажите тип значения, которое будет возвращать метод*/
@@ -143,13 +150,13 @@ public class Main {
         Верните найденное значение используя ключевое слово return.
          */
         int a=0;
-        int b=0;
+
         for (int i =0; i<arrayOfValues.length; i++) {
-            if (a < arrayOfValues[i] && a<=0) {
-                b = arrayOfValues[i];
+            if (a < arrayOfValues[i]) {
+                a = i;
             }
         }
-        return b;
+        return a;
     }
 
     /* Укажите тип значения, которое будет возвращать метод*/
@@ -160,13 +167,13 @@ public class Main {
 
          */
         int a=0;
-        int b=0;
+
         for (int i =0; i<arrayOfValues.length; i++) {
-            if (a > arrayOfValues[i] && a<=0) {
-                b = arrayOfValues[i];
+            if (a > arrayOfValues[i] ) {
+                a = i;
             }
         }
-        return b;
+        return a;
     }
 
     private static byte[] countPositiveNegative(int[] arrayOfValues) {
@@ -178,15 +185,15 @@ public class Main {
             В первый элемент - количество положительных
             Во второй элемент - количество отрицательных
          */
-        byte a = 0;
+
         byte counter_a = 0;
         byte counter_b = 0;
 
-        for (byte i=0; i<arrayOfValues.length; i++){
-            if (a<=arrayOfValues[i] && a<=0){
-                counter_a=counter_a++;
-            }else if (a>=arrayOfValues[i] && a<=0) {
-                counter_b = counter_b++;
+        for (int i=0; i<arrayOfValues.length; i++){
+            if (arrayOfValues[i]>=0){
+                counter_a++;
+            }else if (arrayOfValues[i]<0) {
+                counter_b++;
             }
         }
         result[0]=counter_a;
